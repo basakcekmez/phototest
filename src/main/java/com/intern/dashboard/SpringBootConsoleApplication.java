@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Sort;
 
 import javax.sql.DataSource;
 import java.util.Locale;
@@ -30,12 +31,12 @@ public class SpringBootConsoleApplication implements CommandLineRunner {
     public static void main(String[] args) throws Exception {
         Locale.setDefault(new Locale("en", "EN"));
 
-        if (System.getProperty("dashBoardFolder") == null) {
-            System.setProperty("dashBoardFolder", ".");
+        if (System.getProperty("projectFolder") == null) {
+            System.setProperty("projectFolder", ".");
         }
 
         logger.info("spring.config.location:" + System.getProperty("spring.config.location"));
-        logger.info("dashBoardFolder:" + System.getProperty("dashBoardFolder"));
+        logger.info("projectFolder:" + System.getProperty("projectFolder"));
 
         SpringApplication.run(SpringBootConsoleApplication.class, args);
     }
@@ -46,7 +47,8 @@ public class SpringBootConsoleApplication implements CommandLineRunner {
         // If you want to check the HikariDataSource settings
         HikariDataSource newds = (HikariDataSource) dataSource;
         System.out.println("DATASOURCE = " + newds.getMaximumPoolSize());
-        testHstrRepo.findAll();
+        testHstrRepo.findAll(Sort.by(Sort.Order.desc("testDate")));
+
         //ocsFlightFetcherJob.putToMap();
         //ocsFlightFetcherJob.startFetch();
 

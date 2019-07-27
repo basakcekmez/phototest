@@ -1,14 +1,17 @@
 package com.intern.dashboard.bean.controller;
 
-import com.google.common.cache.Cache;
-import com.intern.dashboard.bean.config.AppSpringConfiguration;
 
+import com.intern.dashboard.bean.config.AppSpringConfiguration;
+import com.intern.dashboard.entity.TestHstr;
 import com.intern.dashboard.job.OCSFlightFetcherJob;
 
+import com.intern.dashboard.repository.TestHstrRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,19 +21,18 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/service")
-public class OCStpsController {
+public class TestService {
     @Autowired
     AppSpringConfiguration dataSource;//todo datasource'a gerek yoksa kaldir
-   /* @Autowired
-    OcsFlightRecorderRepo ocsFlightRecorderRepo;*/
+    @Autowired
+    TestHstrRepo testHstrRepo;
     @Autowired
     OCSFlightFetcherJob ocsFlightFetcherJob;
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
-   // Cache<Long, OcsFlightRecorder> ocsFlightTable;
+    // Cache<Long, OcsFlightRecorder> ocsFlightTable;
 
-    public OCStpsController() {
-
+    public TestService() {
     }
 
     @RequestMapping(value = "/checkDatasource")
@@ -49,14 +51,18 @@ public class OCStpsController {
         return true;
     }
 
-
- /*   @RequestMapping(2value = "/getLatestOCSfrs", method = RequestMethod.GET)
-    public @ResponseBody  List<OcsFlightRecorder> getLatestOCSfrs(@RequestParam("id") Long id) {
-
-        return ocsFlightFetcherJob.getCurrentRecordsAfter(id);
+    @RequestMapping(value = "/getAllTest", method = RequestMethod.GET)
+    public @ResponseBody
+    List<TestHstr> getLatestOCSfrs() {
+        return testHstrRepo.findAll(Sort.by(Sort.Order.desc("testDate")));
     }
 
-    public Cache<Long, OcsFlightRecorder> getOcsFlightTable() {
+   /* public @ResponseBody  List<OcsFlightRecorder> getLatestOCSfrs(@RequestParam("id") Long id) {
+
+        return ocsFlightFetcherJob.getCurrentRecordsAfter(id);
+    }*/
+
+   /* public Cache<Long, OcsFlightRecorder> getOcsFlightTable() {
         return ocsFlightTable;
     }*/
 }

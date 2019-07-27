@@ -7,7 +7,7 @@
 dependency-reduced-pom.xml
 
 
-
+node_modules
 target/
 out/
 warFolder/

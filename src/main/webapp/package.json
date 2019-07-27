@@ -1,7 +1,7 @@
 {
-  "name": "ocs-dashboard",
+  "name": "PhotoTest",
   "version": "1.0.0",
-  "description": "Dpi Dashboard Project",
+  "description": "PhotoTest Project",
   "main": "index.js",
   "author": "i2i",
   "license": "Copyright2016",
