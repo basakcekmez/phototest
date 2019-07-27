@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="info" >
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <!--<PatternLayout charset="${sys:file.encoding}" pattern="[%X{sessionId}][%t]%logger{36}%n    %d{HH:mm:ss.SSS} %-5level  - %msg%n"/>-->
+            <PatternLayout charset="${sys:file.encoding}" pattern="[%t]%logger{36}%n  %d{HH:mm:ss.SSS} %-5level  - %msg%n"/>
+        </Console>
+
+        <RollingFile  name="DashboardLogger"
+                      fileName="${sys:dashBoardFolder}/log/dashboard.log"
+                      filePattern="${sys:dashBoardFolder}/log/$${date:yyyy-MM}/dashboard-%d{yyyy-MM-dd}-%i.log.gz"
+                      append="true"
+                      immediateFlush = "true">
+            <PatternLayout charset="UTF-8" pattern="[%t]%logger{36}%n  %d{yyyy-MM-dd@HH:mm:ss.SSS} %-5level - %msg%n%n"/>
+            <!-- <pattern>[%t]%logger{36}%n    %d{yyyy-MM-dd@HH:mm:ss.SSS} %-5level - %msg%n</pattern> -->
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="100 MB" />
+            </Policies>
+            <!-- max indicates the rolling number(%i value may be max 100)-->
+            <DefaultRolloverStrategy max="100">
+                <Delete basePath="${sys:dashBoardFolder}/log" maxDepth="2">
+                    <IfFileName glob="*/*.log.gz">
+                        <IfAny>
+                            <IfAccumulatedFileSize  exceeds="10000 MB" /> <!--todo log'lar ne zaman silinsin-->
+                            <IfAccumulatedFileCount exceeds="100000" />
+                        </IfAny>
+                    </IfFileName>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+
+        <Logger name="com.i2i" level = "info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="DashboardLogger"/>
+        </Logger>
+
+        <Logger name="com" level = "info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="DashboardLogger"/>
+        </Logger>
+
+        <Logger name="net" level = "info" additivity="false">
+
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="DashboardLogger"/>
+        </Logger>
+
+        <Logger name="org" level = "info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="DashboardLogger"/>
+        </Logger>
+
+        <Root level="debug"><!-- level: ALL <= TRACE < DEBUG < INFO < WARN < ERROR < FATAL < OFF -->
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="DashboardLogger"/>
+
+        </Root>
+    </Loggers>
+
+</Configuration>

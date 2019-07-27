@@ -1,0 +1,107 @@
+package com.i2i.ocs.dashboard.entity;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Email;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "OCS_FLIGHT_RECORDER")
+public class OcsFlightRecorder implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ID;
+
+
+    @Column(name = "RCVD_TASK_CNT")
+    private Long recievedTaskCount;
+
+    @Column(name = "SENT_TASK_CNT")
+    private Long sentTaskCount;
+
+    @Column(name = "CDATE")
+    private Long date;
+
+    @Column(name = "REJECTED_TASK_CNT")
+    private Long rejectedTaskCount;
+
+    @Column(name = "SUCCESSED_TASK_CNT")
+    private Long successedTaskCount;
+
+
+    @Column(name = "TPS_SENT_TASK")
+    private Long tpsSentTask;
+
+    @Column(name = "TPS_RCVD_TASK")
+    private Long tpsRecievedTask;
+
+
+    public OcsFlightRecorder(){
+
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public Long getRecievedTaskCount() {
+        return recievedTaskCount;
+    }
+
+    public void setRecievedTaskCount(Long recievedTaskCount) {
+        this.recievedTaskCount = recievedTaskCount;
+    }
+
+    public Long getSentTaskCount() {
+        return sentTaskCount;
+    }
+
+    public void setSentTaskCount(Long sentTaskCount) {
+        this.sentTaskCount = sentTaskCount;
+    }
+
+    public Long getRejectedTaskCount() {
+        return rejectedTaskCount;
+    }
+
+    public void setRejectedTaskCount(Long rejectedTaskCount) {
+        this.rejectedTaskCount = rejectedTaskCount;
+    }
+
+    public Long getSuccessedTaskCount() {
+        return successedTaskCount;
+    }
+
+    public void setSuccessedTaskCount(Long successedTaskCount) {
+        this.successedTaskCount = successedTaskCount;
+    }
+
+    public Long getTpsSentTask() {
+        return tpsSentTask;
+    }
+
+    public void setTpsSentTask(Long tpsSentTask) {
+        this.tpsSentTask = tpsSentTask;
+    }
+
+    public Long getTpsRecievedTask() {
+        return tpsRecievedTask;
+    }
+
+    public void setTpsRecievedTask(Long tpsRecievedTask) {
+        this.tpsRecievedTask = tpsRecievedTask;
+    }
+
+    public Long getDate() {
+        return date;
+    }
+
+    public void setDate(Long date) {
+        this.date = date;
+    }
+}

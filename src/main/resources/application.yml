@@ -1,0 +1,43 @@
+
+dashboard:
+  fetcher:
+    recordCount: 120
+
+
+
+
+
+#spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+#spring.jpa.properties.hibernate.id.new_generator_mappings = false
+#spring.jpa.properties.hibernate.format_sql = true
+
+#hibernate.dialect org.hibernate.dialect.TimesTenDialect
+#hibernate.connection.driver_class com.timesten.jdbc.TimesTenDriver
+#hibernate.connection.url jdbc:timesten:direct:test
+#hibernate.connection.username
+#hibernate.connection.password
+
+
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.TimesTenDialect
+        show_sql: false
+        use_sql_comments: false
+
+  datasource:
+    name: Development Setup
+    jdbc-url: jdbc:timesten:client:ttc_server_dsn=TT_NGO;ttc_server=172.30.10.78;tcp_port=53397;ConnectionName=dashboard
+    driver-class-name: com.timesten.jdbc.TimesTenDriver
+    username: cache
+    password: cache
+
+
+
+
+server:
+  port: 7080
+  servlet:
+    context-path: /ocs-dashboard

@@ -1,0 +1,2 @@
+paketleme hizlica olmali, lib siliyoruz suan (provided?)
+disaridan server url'i verilebilmeli
