@@ -1,10 +1,10 @@
-package com.i2i.ocs.dashboard.bean.controller;
+package com.intern.dashboard.bean.controller;
 
 import com.google.common.cache.Cache;
-import com.i2i.ocs.dashboard.bean.config.AppSpringConfiguration;
-import com.i2i.ocs.dashboard.entity.OcsFlightRecorder;
-import com.i2i.ocs.dashboard.job.OCSFlightFetcherJob;
-import com.i2i.ocs.dashboard.repository.OcsFlightRecorderRepo;
+import com.intern.dashboard.bean.config.AppSpringConfiguration;
+
+import com.intern.dashboard.job.OCSFlightFetcherJob;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +21,13 @@ import java.util.List;
 public class OCStpsController {
     @Autowired
     AppSpringConfiguration dataSource;//todo datasource'a gerek yoksa kaldir
-    @Autowired
-    OcsFlightRecorderRepo ocsFlightRecorderRepo;
+   /* @Autowired
+    OcsFlightRecorderRepo ocsFlightRecorderRepo;*/
     @Autowired
     OCSFlightFetcherJob ocsFlightFetcherJob;
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
-    Cache<Long, OcsFlightRecorder> ocsFlightTable;
+   // Cache<Long, OcsFlightRecorder> ocsFlightTable;
 
     public OCStpsController() {
 
@@ -50,7 +50,7 @@ public class OCStpsController {
     }
 
 
-    @RequestMapping(value = "/getLatestOCSfrs", method = RequestMethod.GET)
+ /*   @RequestMapping(2value = "/getLatestOCSfrs", method = RequestMethod.GET)
     public @ResponseBody  List<OcsFlightRecorder> getLatestOCSfrs(@RequestParam("id") Long id) {
 
         return ocsFlightFetcherJob.getCurrentRecordsAfter(id);
@@ -58,5 +58,5 @@ public class OCStpsController {
 
     public Cache<Long, OcsFlightRecorder> getOcsFlightTable() {
         return ocsFlightTable;
-    }
+    }*/
 }

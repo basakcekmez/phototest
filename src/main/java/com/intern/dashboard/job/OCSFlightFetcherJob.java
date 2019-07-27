@@ -1,9 +1,6 @@
-package com.i2i.ocs.dashboard.job;
+package com.intern.dashboard.job;
 
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
-import com.i2i.ocs.dashboard.entity.OcsFlightRecorder;
-import com.i2i.ocs.dashboard.repository.OcsFlightRecorderRepo;
+//import com.intern.dashboard.repository.OcsFlightRecorderRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +19,16 @@ public class OCSFlightFetcherJob {
     @Value("${dashboard.fetcher.recordCount}")
     Integer wantedRecordCount;
     Long maxId;
-    @Autowired
-    OcsFlightRecorderRepo ocsFlightRecorderRepo;
-    private Cache<Long, OcsFlightRecorder> ocsFlightTable;
+    /*@Autowired
+    OcsFlightRecorderRepo ocsFlightRecorderRepo;*/
+  //  private Cache<Long, OcsFlightRecorder> ocsFlightTable;
 
 
     @PostConstruct
     private void init() {
-        ocsFlightTable = CacheBuilder.newBuilder()
+     /*   ocsFlightTable = CacheBuilder.newBuilder()
                 .maximumSize(wantedRecordCount + 1000)
-                .build();
+                .build();*/
     }
 
 
@@ -40,7 +37,7 @@ public class OCSFlightFetcherJob {
         new Thread(() -> {
             while (true) {
                 try {
-                    if (ocsFlightTable.size() < 1) {
+                   /* if (ocsFlightTable.size() < 1) {
                         Optional<Long> maxIdOp = ocsFlightRecorderRepo.findMaxId();
                         if (maxIdOp.isPresent()) {
                             maxId = maxIdOp.get();
@@ -48,7 +45,7 @@ public class OCSFlightFetcherJob {
                         }
                     } else {
                         putNewerRecords();
-                    }
+                    }*/
 
 
                 } catch (Exception e) {
@@ -65,7 +62,7 @@ public class OCSFlightFetcherJob {
     }
 
 
-    private void putInitialRecords() {
+   /* private void putInitialRecords() {
         List<OcsFlightRecorder> ocsFlightRecorders = ocsFlightRecorderRepo.findRecordsAfter(maxId - (wantedRecordCount - 1), wantedRecordCount);
         pushRecordsToMap(ocsFlightRecorders);
     }
@@ -102,5 +99,5 @@ public class OCSFlightFetcherJob {
             return newRecords.subList(newRecords.size() - 1 - (wantedRecordCount - 1), newRecords.size());
         } else
             return newRecords;
-    }
+    }*/
 }

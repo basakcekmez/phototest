@@ -1,4 +1,4 @@
-package com.i2i.ocs.dashboard.bean.config;
+package com.intern.dashboard.bean.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;

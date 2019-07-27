@@ -1,4 +1,4 @@
-package com.i2i.ocs.dashboard.bean.properties;
+package com.intern.dashboard.bean.properties;
 
 /**
  * Created by 7593 on 7.05.2018.

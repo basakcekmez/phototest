@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
-	<display-name>ocs-dashboard</display-name>
+	<display-name>phototest</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -28,7 +28,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>com.i2i.ocs.dashboard.bean.config.AppSpringConfiguration</param-value>
+		<param-value>com.intern.dashboard.bean.config.AppSpringConfiguration</param-value>
 	</context-param>
 
 	<listener>
@@ -56,7 +56,7 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				com.i2i.ocs.dashboard.bean.controller.config.MvcSpringConfiguration
+				com.intern.dashboard.bean.controller.config.MvcSpringConfiguration
 			</param-value>
 		</init-param>
 	</servlet>
