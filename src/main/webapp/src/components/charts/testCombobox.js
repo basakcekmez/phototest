@@ -9,6 +9,11 @@ class TestCombobox extends Component {
     componentDidMount() {
         axios.get(CONSTANT.serviceUrl + "getAllTest")
             .then(result => {
+                for (var i = 0; i < result.data.length; i++) {
+                    var testCase = result.data[i];
+                    console.log(testCase.testName);
+                }
+
             });
     }
 
