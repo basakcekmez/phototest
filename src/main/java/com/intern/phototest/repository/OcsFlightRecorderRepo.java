@@ -1,4 +1,4 @@
-package com.intern.dashboard.repository;
+package com.intern.phototest.repository;
 /*
 import com.intern.dashboard.entity.OcsFlightRecorder;
 import org.springframework.data.jpa.repository.JpaRepository;

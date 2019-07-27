@@ -1,8 +1,8 @@
-package com.intern.dashboard;
+package com.intern.phototest;
 
-import com.intern.dashboard.job.OCSFlightFetcherJob;
+import com.intern.phototest.job.OCSFlightFetcherJob;
 //import com.intern.dashboard.repository.OcsFlightRecorderRepo;
-import com.intern.dashboard.repository.TestHstrRepo;
+import com.intern.phototest.repository.TestHstrRepo;
 import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

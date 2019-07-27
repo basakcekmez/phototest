@@ -1,11 +1,11 @@
-package com.intern.dashboard.bean.controller;
+package com.intern.phototest.bean.controller;
 
 
-import com.intern.dashboard.bean.config.AppSpringConfiguration;
-import com.intern.dashboard.entity.TestHstr;
-import com.intern.dashboard.job.OCSFlightFetcherJob;
+import com.intern.phototest.bean.config.AppSpringConfiguration;
+import com.intern.phototest.entity.TestHstr;
+import com.intern.phototest.job.OCSFlightFetcherJob;
 
-import com.intern.dashboard.repository.TestHstrRepo;
+import com.intern.phototest.repository.TestHstrRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -28,7 +28,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>com.intern.dashboard.bean.config.AppSpringConfiguration</param-value>
+		<param-value>com.intern.phototest.bean.config.AppSpringConfiguration</param-value>
 	</context-param>
 
 	<listener>
@@ -56,8 +56,8 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				com.intern.dashboard.bean.controller.config.MvcSpringConfiguration
-			</param-value>
+                com.intern.phototest.bean.controller.config.MvcSpringConfiguration
+            </param-value>
 		</init-param>
 	</servlet>
 

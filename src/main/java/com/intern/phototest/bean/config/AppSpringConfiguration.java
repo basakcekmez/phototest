@@ -1,4 +1,4 @@
-package com.intern.dashboard.bean.config;
+package com.intern.phototest.bean.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -13,7 +13,7 @@ import javax.sql.DataSource;
  */
 
 @Configuration
-@ComponentScan(basePackages = "com.i2i.ocs.dashboard")
+@ComponentScan(basePackages = "com.intern.phototest")
 @PropertySource("classpath:application.yml")
 public class AppSpringConfiguration {
     @Bean

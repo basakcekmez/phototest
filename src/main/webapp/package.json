@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "PhotoTest Project",
   "main": "index.js",
-  "author": "i2i",
+  "author": "basakcekmez",
   "license": "Copyright2016",
   "dependencies": {
     "axios": "^0.18.0",

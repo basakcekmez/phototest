@@ -1,14 +1,12 @@
-package com.intern.dashboard.job;
+package com.intern.phototest.job;
 
 //import com.intern.dashboard.repository.OcsFlightRecorderRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.*;
 
 /**
  * Created by 7593 on 9.05.2018.
@@ -16,7 +14,7 @@ import java.util.*;
 @Service
 public class OCSFlightFetcherJob {
     Logger logger = LoggerFactory.getLogger(this.getClass());
-    @Value("${dashboard.fetcher.recordCount}")
+    @Value("${phototest.fetcher.recordCount}")
     Integer wantedRecordCount;
     Long maxId;
     /*@Autowired
