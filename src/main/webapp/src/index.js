@@ -23,9 +23,9 @@ ReactDOM.render(
             </div>
         </div>
         {  /*
-
         <TpsCount />
-        <SuccessCount />*/}
+        <SuccessCount />*/
+        }
     </div>
     ,
     document.getElementById('root')
