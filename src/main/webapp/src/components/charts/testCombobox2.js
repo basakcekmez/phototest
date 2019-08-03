@@ -15,6 +15,7 @@ const scaryAnimals = [
 
 class TestComboBox2 extends Component {
     state={
+        selectedOption: null
     }
     componentDidMount() {
     }
