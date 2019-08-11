@@ -1,34 +1,50 @@
-
-import React, { Component } from 'react';
-import Select from 'react-select';
+import React, {Component} from 'react';
 import faker from "faker";
+import * as CONSTANT from '../../constant/constants';
+import axios from 'axios';
+import AsyncSelect from 'react-select/async';
 
+const colourOptions = [{
+    label: "red", value: "red"
+}]
 
-const scaryAnimals = [
-    { label: "Alligators", value: 1 },
-    { label: "Crocodiles", value: 2 },
-    { label: "Sharks", value: 3 },
-    { label: "Small crocodiles", value: 4 },
-    { label: "Smallest crocodiles", value: 5 },
-    { label: "Snakes", value: 6 },
-];
+const filterOptions = (inputValue: string, options: any) => {
+    return options.filter(i =>
+        i.label.toLowerCase().includes(inputValue.toLowerCase())
+    );
+};
 
-class TestComboBox2 extends Component {
-    state={
-        selectedOption: null
+const loadOptions = (inputValue, callback) => {
+
+    axios.get(CONSTANT.serviceUrl + "getAllTest")
+        .then(result => {
+            var options = new Array(result.data.length);
+            for (var i = 0; i < result.data.length; i++) {
+                var testCase = result.data[i];
+                options[i] = {label: testCase.testName, value: i + 1};
+            }
+            callback(filterOptions(inputValue, options));
+        });
+};
+
+class TestComboBox2 extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            inputValue: null
+        };
     }
-    componentDidMount() {
-    }
-    handleChange = selectedOption => {
-        this.setState({ selectedOption });
-        console.log(`Option selected:`, selectedOption);
-    };
 
     render() {
         return (
-           <div>
-               <Select options={scaryAnimals}   onChange={this.handleChange}/>
-           </div>
+            <div>
+                <AsyncSelect
+                    cacheOptions
+                    loadOptions={loadOptions}
+                    defaultOptions
+                />
+            </div>
 
         );
     }

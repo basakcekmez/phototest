@@ -6,6 +6,7 @@
   "author": "basakcekmez",
   "license": "Copyright2016",
   "dependencies": {
+    "debounce-promise": "^3.1.2",
     "faker": "^4.1.0",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
