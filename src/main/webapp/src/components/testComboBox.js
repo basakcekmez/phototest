@@ -33,7 +33,6 @@ class TestComboBox extends React.Component {
     };
 
     loadOptions = (inputValue, callback) => {
-
         axios.get(CONSTANT.serviceUrl + "getAllTest")
             .then(result => {
                 console.log("getAllTest result came");
