@@ -64,16 +64,13 @@ public class OCSFlightFetcherJob {
         List<OcsFlightRecorder> ocsFlightRecorders = ocsFlightRecorderRepo.findRecordsAfter(maxId - (wantedRecordCount - 1), wantedRecordCount);
         pushRecordsToMap(ocsFlightRecorders);
     }
-
     private void putNewerRecords() {
         List<OcsFlightRecorder> ocsFlightRecorders = ocsFlightRecorderRepo.findRecordsAfter(maxId, wantedRecordCount);
         if (ocsFlightRecorders.size() > 100)
             logger.warn("This is not expected normally we are expecting 20 counts max for newer ocsFlightRecorders, " +
                     "currentCount:" + ocsFlightRecorders.size());
         pushRecordsToMap(ocsFlightRecorders);
-
     }
-
     private void pushRecordsToMap(List<OcsFlightRecorder> ocsFlightRecorders) {
         for (OcsFlightRecorder ocsFlightRecorder : ocsFlightRecorders) {
             ocsFlightTable.put(ocsFlightRecorder.getID(), ocsFlightRecorder);
@@ -82,7 +79,6 @@ public class OCSFlightFetcherJob {
             }
         }
     }
-
     public List<OcsFlightRecorder> getCurrentRecordsAfter(Long id) {
         List<OcsFlightRecorder> newRecords = new ArrayList<>();
         Collection<OcsFlightRecorder> ocsFlightRecorders = ocsFlightTable.asMap().values();
@@ -91,7 +87,6 @@ public class OCSFlightFetcherJob {
                 newRecords.add(record);
             }
         }
-
         Collections.sort(newRecords, (o1, o2) -> o1.getID().compareTo(o2.getID()));
         if (newRecords.size() > wantedRecordCount) {
             return newRecords.subList(newRecords.size() - 1 - (wantedRecordCount - 1), newRecords.size());

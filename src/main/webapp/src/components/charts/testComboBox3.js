@@ -5,7 +5,7 @@ import axios from 'axios';
 import * as CONSTANT from '../../constant/constants';
 
 
-class TestCombobox extends Component {
+class TestComboBox3 extends Component {
     state={
         getAllTest:[]
     }
@@ -35,7 +35,7 @@ render() {
 const{getAllTest}=this.state;
 return (
 <div className="testCombobox">
-<select value={this.state.getAllTest}>
+<select defaultValue={this.state.getAllTest} >
 {getAllTest.map(this.rendergetAllTest)}
 </select>
 </div>
@@ -44,4 +44,4 @@ return (
 }
 }
 
-export default TestCombobox;
+export default TestComboBox3;

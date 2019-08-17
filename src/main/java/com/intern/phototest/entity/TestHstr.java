@@ -13,7 +13,7 @@ public class TestHstr implements Serializable {
     private String testName;
 
     @Column(name = "test_result")
-    private Long testResult;
+    private String testResult;
 
     @Column(name = "test_date")
     private Timestamp testDate;
@@ -30,11 +30,11 @@ public class TestHstr implements Serializable {
         this.testName = testName;
     }
 
-    public Long getTestResult() {
+    public String getTestResult() {
         return testResult;
     }
 
-    public void setTestResult(Long testResult) {
+    public void setTestResult(String testResult) {
         this.testResult = testResult;
     }
 
