@@ -28,17 +28,23 @@ class TestItem extends React.Component {
 
 
     switch = () => {
-        var success = this.state.variableParent[this.state.variableName];
-        this.state.variableParent[this.state.variableName] = !success;
+        var success = this.getTestItemResult();
+        this.setTestItemResult(!success);
+        //to rerender component
         this.setState({})
     };
 
-    handleFail = () => {
 
+    getTestItemResult = () => {
+        return this.state.variableParent[this.state.variableName];
+    };
+
+    setTestItemResult = (result: boolean) => {
+        this.state.variableParent[this.state.variableName] = result;
     };
 
     render() {
-        var success = this.state.variableParent[this.state.variableName];
+        var success = this.getTestItemResult();
 
         var title = 'Başarılı';
 
