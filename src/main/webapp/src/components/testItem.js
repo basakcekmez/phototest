@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Button, Image, StyleSheet, Text, View} from "react-native";
 
 class TestItem extends React.Component {
 
@@ -45,24 +46,40 @@ class TestItem extends React.Component {
 
     render() {
         var success = this.getTestItemResult();
-
+        var color = "#00cc23";
         var title = 'Başarılı';
 
         if (!success) {
+             color = "#cacbcc";
             title = 'Başarısız';
         }
+        title = "Sonuç: " + title;
         return (
             <div>
                 <div>
                     {this.props.title}
                 </div>
-                <button onClick={this.switch}>
-                    {title}
-                </button>
+                <View style={styles.alternativeLayoutButtonContainer}>
+                <Button onPress={this.switch} title= {title}   color={color}/>
+                </View>
             </div>
 
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    buttonContainer: {
+        margin: 20
+    },
+    alternativeLayoutButtonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    }
+});
 
 export default TestItem;
