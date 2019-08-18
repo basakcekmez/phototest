@@ -16,7 +16,8 @@
     "react-dom": "^16.8.6",
     "react-select": "^3.0.4",
     "react-router": "^5.0.1",
-    "react-router-dom": "^5.0.1"
+    "react-router-dom": "^5.0.1",
+    "@syncfusion/ej2-react-navigations": "^17.2.41"
   },
   "devDependencies": {
     "typescript": "^3.5.3",

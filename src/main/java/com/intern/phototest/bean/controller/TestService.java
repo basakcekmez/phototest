@@ -22,40 +22,40 @@ import java.util.List;
 @RestController
 @RequestMapping("/service")
 public class TestService {
-    @Autowired
-    AppSpringConfiguration dataSource;//todo datasource'a gerek yoksa kaldir
-    @Autowired
-    TestHstrRepo testHstrRepo;
-    @Autowired
-    OCSFlightFetcherJob ocsFlightFetcherJob;
+	@Autowired
+	AppSpringConfiguration dataSource;//todo datasource'a gerek yoksa kaldir
+	@Autowired
+	TestHstrRepo           testHstrRepo;
+	@Autowired
+	OCSFlightFetcherJob    ocsFlightFetcherJob;
 
-    Logger logger = LoggerFactory.getLogger(this.getClass());
-    // Cache<Long, OcsFlightRecorder> ocsFlightTable;
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	// Cache<Long, OcsFlightRecorder> ocsFlightTable;
 
-    public TestService() {
-    }
+	public TestService() {
+	}
 
-    @RequestMapping(value = "/checkDatasource")
-    public Boolean checkDatasource() {
-        try {
-            ResultSet resultSet = dataSource.dataSource().getConnection().createStatement().executeQuery("SELECT 1 from DUAL");
-            while (resultSet.next()) {
-                {
-                    logger.info("" + resultSet.getInt(1));
-                }
-            }
+	@RequestMapping(value = "/checkDatasource")
+	public Boolean checkDatasource() {
+		try {
+			ResultSet resultSet = dataSource.dataSource().getConnection().createStatement().executeQuery("SELECT 1 from DUAL");
+			while (resultSet.next()) {
+				{
+					logger.info("" + resultSet.getInt(1));
+				}
+			}
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return true;
-    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
 
-    @RequestMapping(value = "/getAllTest", method = RequestMethod.GET)
-    public @ResponseBody
-    List<TestHstr> getLatestOCSfrs() {
-        return testHstrRepo.findAll(Sort.by(Sort.Order.desc("testDate")));
-    }
+	@RequestMapping(value = "/getAllTest", method = RequestMethod.GET)
+	public @ResponseBody
+	List<TestHstr> getLatestOCSfrs() {
+		return testHstrRepo.findAll(Sort.by(Sort.Order.desc("testDate")));
+	}
 
    /* public @ResponseBody  List<OcsFlightRecorder> getLatestOCSfrs(@RequestParam("id") Long id) {
        
